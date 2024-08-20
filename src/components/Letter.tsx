@@ -104,7 +104,7 @@ const Letter = ({
                                 selectPrevLetter()
                             }
                         }}
-                        tabIndex={0}
+                        tabIndex={-1}
                     >
                         <p
                             className={`font-indie text-4xl text-center select-none ${

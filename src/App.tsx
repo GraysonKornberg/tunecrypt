@@ -15,24 +15,24 @@ function App(): JSX.Element {
         for (let i = b.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1))
             if (i === j) {
-                j--
+                j = (j + 1) % b.length
             }
             ;[b[i], b[j]] = [b[j], b[i]]
         }
         if (b[0] === 'a') {
-            let randomIndex = Math.floor(Math.random() * 25) + 1
-            ;[b[0], b[randomIndex]] = [b[randomIndex], b[0]]
+            ;[b[0], b[1]] = [b[1], b[0]]
         }
         shuffled = b
 
-        cipher = currLetters.reduce((acc: ICipher, letter, index) => {
+        cipher = currLetters.reduce((acc: ICipher, letter) => {
             acc[letter] = {
-                cipher: shuffled[index],
+                cipher: shuffled[letter.charCodeAt(0) - 97],
                 current: null,
                 letter: true,
             }
             return acc
         }, {})
+
         nonLetterSet.forEach((nonLetter) => {
             cipher[nonLetter] = {
                 cipher: nonLetter,

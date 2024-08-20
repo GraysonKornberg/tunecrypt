@@ -21,8 +21,6 @@ const Keyboard = ({ decipher, inputLetter, inputBackspace }: KeyboardProps) => {
             clearTimeout(timeout)
             timeout = setTimeout(() => {
                 setKeyWidth((window.innerWidth - 44) / 10)
-
-                console.log(keyboardContainerRef.current?.clientHeight)
                 setKeyHeight(
                     ((keyboardContainerRef.current?.clientHeight ?? 16) - 16) /
                         3
