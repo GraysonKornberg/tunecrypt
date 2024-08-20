@@ -1,13 +1,12 @@
 import React from 'react'
+import Header from './components/Header'
+import Main from './components/Main'
 
 function App(): JSX.Element {
     return (
         <div>
-            <h1>Lyricipher</h1>
-            <p>
-                Lyricipher is a web app that lets you encrypt and decrypt text
-                using song lyrics.
-            </p>
+            <Header />
+            <Main />
         </div>
     )
 }
