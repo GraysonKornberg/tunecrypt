@@ -1,35 +1,32 @@
 import React, { useEffect } from 'react'
 import Word from './Word'
 
-const Lyrics = () => {
-    const CreateCipher = () => {
-        let cipher: ICipher = {}
-        let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
-        let shuffled = [...alphabet].sort(() => Math.random() - 0.5)
-        cipher = alphabet.reduce((acc: ICipher, letter, index) => {
-            acc[letter] = { cipher: shuffled[index], current: null }
-            return acc
-        }, {})
-        cipher[' '] = { cipher: ' ', current: null }
-        return cipher
-    }
+interface LyricsProps {
+    lyrics: string
+    cipher: ICipher
+    selectedLetter: ISelectedLetter
+    setSelectedLetter: React.Dispatch<React.SetStateAction<ISelectedLetter>>
+    inputLetter: (newLetter: string) => void
+    inputBackspace: () => void
+    decipher: IDecipher
+}
 
-    const [lyrics, setLyrics] = React.useState<string>(
-        'these are the lyrics to the song these are the lyrics to the song these are the lyrics to the song these are the lyrics to the song'
-    )
-    const [cipher, setCipher] = React.useState<ICipher>(CreateCipher())
-    const [selectedLetter, setSelectedLetter] = React.useState<ISelectedLetter>(
-        { letter: '', index: -1 }
-    )
-
+const Lyrics = ({
+    lyrics,
+    cipher,
+    selectedLetter,
+    setSelectedLetter,
+    inputLetter,
+    inputBackspace,
+    decipher,
+}: LyricsProps) => {
     return (
-        <div className='flex mx-10 justify-center flex-wrap gap-y-10 gap-x-10'>
+        <div className='flex mx-10 justify-center flex-wrap gap-y-10 gap-x-10 h-full overflow-y-scroll'>
             {lyrics.split(' ').map((word, index) => (
                 <Word
                     key={index}
                     word={word}
                     cipher={cipher}
-                    setCipher={setCipher}
                     selectedLetter={selectedLetter}
                     setSelectedLetter={setSelectedLetter}
                     letterStartIndex={
@@ -39,6 +36,9 @@ const Lyrics = () => {
                             .join(' ').length - word.length
                     }
                     lyrics={lyrics}
+                    inputLetter={inputLetter}
+                    inputBackspace={inputBackspace}
+                    decipher={decipher}
                 />
             ))}
         </div>

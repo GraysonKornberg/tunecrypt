@@ -14,6 +14,9 @@ module.exports = {
             fontFamily: {
                 indie: ['Indie Flower'],
             },
+            screens: {
+                xsm: '500px',
+            },
         },
     },
     plugins: [],

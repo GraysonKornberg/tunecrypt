@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <div className='flex justify-between px-5 bg-pink shadow-lg'>
             <div className='flex items-center'>
-                <h1 className='font-indie text-7xl mr-7 mt-5 shadow-black text-shadow-sm'>
+                <h1 className='font-indie text-7xl mr-7 mt-5 shadow-black text-shadow-sm select-none'>
                     TuneCrypt
                 </h1>
                 <button>
